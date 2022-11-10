@@ -1,18 +1,20 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Conways-game-of-life</title>
-	<style>
-	html, body {
-		margin: 0;
-		position: fixed;
-	}
-	</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<script src="main.js"></script>
+    <div id="container">
+        <canvas id="canvas"></canvas>
+        <div id="optionsBar">
+            <button id="stopAndPlayBtn" class="btn" onclick="stopAndPlayBtn_onclick()">> play_</button>
+            <button id="resetBtn" class="btn" onclick="resetBtn_onclick()">> reset_</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
