@@ -1,17 +1,18 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 600;
-canvas.height = 600;
+canvas.width = window.innerWidth / 1.2;
+canvas.height = canvas.width;
+document.getElementById('optionsBar').style.width = canvas.width + 4 + 'px';
 
 // global variables
 const density = 40;
-const gridSize = 64;
-const cellSize = canvas.width / gridSize;
-const cellGap = 3;
+const gridSize = 32;
+var cellSize = canvas.width / gridSize;
+var cellGap = cellSize / 10;
 var grid = createGrid()
 
 var isPlaying = false;
-const speed = 60;
+const FPS = 60;
 
 // main function
 const gameLoop = setInterval(() => {
@@ -47,7 +48,7 @@ const gameLoop = setInterval(() => {
         }
     }
     if (isPlaying) grid = newGrid;
-}, 1000 / speed);
+}, 1000 / FPS);
 
 // function that check if the current cells has neighbors
 function checkNeighbors(x, y) {
@@ -99,3 +100,16 @@ function stopAndPlayBtn_onclick() {
 function resetBtn_onclick() {
     grid = createGrid(density);
 }
+
+// change the size of the canvas when the window is resized
+addEventListener('resize', (event) => {
+    canvas.width = window.innerWidth / 1.2;
+    canvas.height = canvas.width;
+    if (canvas.height > window.innerHeight / 1.2) {
+        canvas.width = window.innerHeight / 1.2;
+        canvas.height = canvas.width;
+    }
+    cellSize = canvas.width / gridSize;
+    cellGap = cellSize / 10;
+    document.getElementById('optionsBar').style.width = canvas.width + 4 + 'px';
+});
