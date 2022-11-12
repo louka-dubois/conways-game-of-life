@@ -34,7 +34,7 @@ body {
     border-radius: 8px;
     color: #ddd;
     width: calc(50% - 0.5rem);
-    font-size: 1.5rem;
+    font-size: 14px;
     font-weight: 700;
     cursor: pointer;
     padding: 0.5rem;
@@ -44,4 +44,52 @@ body {
 
 .btn:hover {
     border: 2px solid #14594d;
+}
+
+.userInput {
+    background-color: #151515;
+    border: 2px solid #252525;
+    border-radius: 8px;
+    color: #ddd;
+    width: 0px;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    font-family: 'Roboto Medium', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+input {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#lblDensity, #lblGridSize, #lblSpeed {
+    border: none;
+    color: #454545;
+    margin: 0.5rem;
+    width: calc(100px);
+}
+
+#inputDensity, #inputGridSize, #inputSpeed {    
+    border: 2px solid #151515;
+    background-color: #151515;
+    color: #ddd;
+    width: 90%;
+    margin: 0.1rem 0.1rem;
+}
+
+#inputGridSize:hover, #inputDensity:hover, #inputSpeed:hover {
+    border: 2px solid #14594d;
+    border-radius: 8px;
+}
+
+#inputGridSize:focus, #inputDensity:focus, #inputSpeed:focus {
+    outline: none !important;
+    border: 2px solid #14594d;
+    border-radius: 8px;
 }

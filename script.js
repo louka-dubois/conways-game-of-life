@@ -1,18 +1,21 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth / 1.2;
+canvas.width = window.innerHeight / 1.7;
 canvas.height = canvas.width;
 document.getElementById('optionsBar').style.width = canvas.width + 4 + 'px';
+var userInput = document.querySelectorAll('.userInput')
+for (var i = 0; i < userInput.length; i++) {
+    userInput[i].style.width = canvas.width + 'px';
+}
 
 // global variables
-const density = 40;
-const gridSize = 32;
+var FPS = document.getElementById('inputSpeed').value ? document.getElementById('inputFPS').value : 15;
+var density = document.getElementById('inputDensity').value ? document.getElementById('inputDensity').value : 50;
+var gridSize = document.getElementById('inputGridSize').value ? document.getElementById('inputGridSize').value : 32;
 var cellSize = canvas.width / gridSize;
 var cellGap = cellSize / 10;
 var grid = createGrid()
-
 var isPlaying = false;
-const FPS = 60;
 
 // main function
 const gameLoop = setInterval(() => {
@@ -98,18 +101,29 @@ function stopAndPlayBtn_onclick() {
 }
 
 function resetBtn_onclick() {
+    isPlaying = false;
+    document.getElementById('stopAndPlayBtn').innerHTML = '> play_';
+    density = document.getElementById('inputDensity').value ? document.getElementById('inputDensity').value : 50;
+    gridSize = document.getElementById('inputGridSize').value ? document.getElementById('inputGridSize').value : 32;
+    cellSize = canvas.width / gridSize;
+    cellGap = cellSize / 10;
     grid = createGrid(density);
+    FPS = document.getElementById('inputSpeed').value ? document.getElementById('inputFPS').value : 15;
 }
 
 // change the size of the canvas when the window is resized
 addEventListener('resize', (event) => {
-    canvas.width = window.innerWidth / 1.2;
+    canvas.width = window.innerWidth / 1.4;
     canvas.height = canvas.width;
-    if (canvas.height > window.innerHeight / 1.2) {
-        canvas.width = window.innerHeight / 1.2;
+    if (canvas.height > window.innerHeight / 1.7) {
+        canvas.width = window.innerHeight / 1.7;
         canvas.height = canvas.width;
     }
     cellSize = canvas.width / gridSize;
     cellGap = cellSize / 10;
     document.getElementById('optionsBar').style.width = canvas.width + 4 + 'px';
+    var userInput = document.querySelectorAll('.userInput')
+    for (var i = 0; i < userInput.length; i++) {
+        userInput[i].style.width = canvas.width + 'px';
+    }
 });
